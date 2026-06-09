@@ -8,7 +8,8 @@ from datetime import datetime
 from tqdm import tqdm
 import pandas as pd
 import torch
-from simpletransformers.ner import NERModel
+from simpletransformers.ner import NERModel, NERArgs
+from transformers import AlbertConfig
 
 # Relative imports
 from .parse import read_android_log, read_ios_log
@@ -188,7 +189,11 @@ def run_ner(config):
         return False
 
     print("Loading model...\n")
-    droner = NERModel("albert", model_dir, use_cuda=use_cuda)
+    albert_config = AlbertConfig.from_pretrained(model_dir)
+    labels = list(albert_config.id2label.values())
+    args = NERArgs()
+    args.labels_list = labels
+    droner = NERModel("albert", model_dir, use_cuda=use_cuda, args=args)
     print("Model loaded.\n")
 
     timeline = pd.read_csv(timeline_path, encoding="utf-8")
