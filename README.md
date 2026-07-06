@@ -1,4 +1,4 @@
-# [ADFLER: Advanced Drone Flight Log Entity Recognizer](https://github.com/DroneNLP/ADFLER)
+# [ADFLER: Automated Drone Flight Log Entity Recognizer](https://github.com/DroneNLP/ADFLER)
 
 ADFLER is an open-source tool developed to perform named entity recognition on drone flight log data to support forensic investigations. It uses a fine-tuned ALBERT model to identify entities (like Event and NonEvent) in log messages and constructs a forensic timeline.
 
